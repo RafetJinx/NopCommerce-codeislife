@@ -1,0 +1,22 @@
+﻿@{
+    NopHtml.AppendCssFileParts("~/Plugins/Widgets.AskVendor/Content/css/style.css");
+    NopHtml.AppendCssFileParts("~/Plugins/Widgets.AskVendor/Content/css/modaal.css");
+
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, "~/Plugins/Widgets.AskVendor/Content/js/askvendor.js");
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, "~/Plugins/Widgets.AskVendor/Content/js/modaal.js");
+}
+
+<div class="ask-vendor">
+    <button type="button" class="button-2 ask-vendor-button modaal"
+            data-modaal-content-source="#askvendor" data-modaal-type="inline" data-modaal-animation="fade">
+        @T("Plugin.Widgets.AskVendor.Button")
+    </button>
+</div>
+
+<div id="askvendor" style="display:none;">
+    Inline content goes here...
+</div>
+
+<script asp-location="Footer">
+    console.log("Inline script oluştu");
+</script>

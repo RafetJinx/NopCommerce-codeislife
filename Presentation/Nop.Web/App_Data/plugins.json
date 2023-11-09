@@ -94,6 +94,10 @@
     {
       "SystemName": "Widgets.AskVendor",
       "Version": "1.0"
+    },
+    {
+      "SystemName": "Widgets.ProductInStock",
+      "Version": "1.0"
     }
   ],
   "PluginNamesToUninstall": [],

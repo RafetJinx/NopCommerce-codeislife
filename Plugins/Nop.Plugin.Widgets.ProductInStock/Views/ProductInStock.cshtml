@@ -1,0 +1,21 @@
+﻿@model Nop.Plugin.Widgets.ProductInStock.Models.StockViewModel
+
+@{
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, "~/Plugins/Widgets.ProductInStock/Content/js/productInStock.js");
+}
+
+<script>
+    // Sayfa yükleme sırasında modelden JavaScript'e veri aktarımı
+    var allProducts = @Html.Raw(Json.Serialize(Model.AllProducts));
+    var inStockProducts = @Html.Raw(Json.Serialize(Model.ProductsInStock));
+    var outOfStockProducts = @Html.Raw(Json.Serialize(Model.ProductsOutOfStock));
+</script>
+
+<div>
+    <label>Stock Status</label>
+    <select name="stockStatus" id="stockStatus" onchange="updateProductList(this.value);">
+        <option value="all">All</option>
+        <option value="inStock">In Stock</option>
+        <option value="outOfStock">Out of Stock</option>
+    </select>
+</div>

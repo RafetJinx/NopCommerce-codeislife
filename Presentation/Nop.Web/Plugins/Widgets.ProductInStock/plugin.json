@@ -1,0 +1,16 @@
+﻿{
+  "Group": "rafet ersoy plugin",
+  "FriendlyName": "Product InStock Check",
+  "SupportedVersions": [
+    "4.60"
+  ],
+  "Author": "rafet ersoy",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Widgets.ProductInStock.dll",
+  "Description": "Adds the feature to sort the products in the catalogue according to InStock status.",
+  "LimitedToStores": [],
+  "LimitedToCustomerRoles": [],
+  "DependsOnSystemNames": [],
+  "SystemName": "Widgets.ProductInStock",
+  "Version": "1.0"
+}

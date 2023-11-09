@@ -6,6 +6,7 @@
     <div class="ajax-products-busy"></div>
     <div class="products-wrapper">
         @await Html.PartialAsync("_ProductsInGridOrLines", Model)
+        @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = "ProductListBefore", additionalData = Model })
     </div>
 </div>
 <script asp-location="Footer">
@@ -22,7 +23,7 @@
         });
     });
 
-    function "() {
+    function addPagerHandlers() {
         $('[data-page]').on('click', function (e) {
             e.preventDefault();
             CatalogProducts.getProducts($(this).data('page'));

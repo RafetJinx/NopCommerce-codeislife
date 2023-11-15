@@ -1,11 +1,10 @@
-﻿using Nop.Web.Models.Catalog;
+﻿using Nop.Web.Framework.UI.Paging;
+using Nop.Web.Models.Catalog;
 
 namespace Nop.Plugin.Widgets.ProductInStock.Models
 {
-    public class StockViewModel
+    public partial record class StockViewModel : BasePageableModel
     {
-        public required IList<ProductOverviewModel> AllProducts { get; set; }
-        public required IList<ProductOverviewModel> ProductsInStock { get; set; }
-        public required IList<ProductOverviewModel> ProductsOutOfStock { get; set; }
+        public required int categoryId;
     }
 }

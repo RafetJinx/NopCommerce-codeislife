@@ -6,12 +6,13 @@
     <div class="ajax-products-busy"></div>
     <div class="products-wrapper">
         @await Html.PartialAsync("_ProductsInGridOrLines", Model)
-        @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = "ProductListBefore", additionalData = Model })
+       @* @await Component.InvokeAsync("ProductInStock", new { widgetZone = "ProductListBefore", additionalData = Model }) *@
     </div>
 </div>
 <script asp-location="Footer">
     $(document).ready(function () {
         CatalogProducts.init({
+        // FilteredProducts.init({
             ajax: @Model.UseAjaxLoading.ToString().ToLowerInvariant(),
             browserPath: '@Context.Request.Path',
             fetchUrl: '@ViewData["fetchUrl"]'
@@ -19,6 +20,7 @@
 
         addPagerHandlers();
         $(CatalogProducts).on('loaded', function () {
+        // $(FilteredProducts).on('loaded', function () {
             addPagerHandlers();
         });
     });
@@ -27,7 +29,8 @@
         $('[data-page]').on('click', function (e) {
             e.preventDefault();
             CatalogProducts.getProducts($(this).data('page'));
+            // FilteredProducts.getFilteredProducts($(this).data('page'));
             return false;
         });
     }
-</script>
+</script>  

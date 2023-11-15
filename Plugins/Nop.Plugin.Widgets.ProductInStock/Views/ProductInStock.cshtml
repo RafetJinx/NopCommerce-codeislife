@@ -4,18 +4,19 @@
     NopHtml.AppendScriptParts(ResourceLocation.Footer, "~/Plugins/Widgets.ProductInStock/Content/js/productInStock.js");
 }
 
+<script src="@Url.Content("~/Plugins/Widgets.ProductInStock/wwwroot/custom.catalogproducts.js")" asp-append-version="true"></script>
+
 <script>
-    // Sayfa yükleme sırasında modelden JavaScript'e veri aktarımı
-    var allProducts = @Html.Raw(Json.Serialize(Model.AllProducts));
-    var inStockProducts = @Html.Raw(Json.Serialize(Model.ProductsInStock));
-    var outOfStockProducts = @Html.Raw(Json.Serialize(Model.ProductsOutOfStock));
+    var categoryId = @Html.Raw(Json.Serialize(Model.categoryId));
 </script>
 
 <div>
     <label>Stock Status</label>
-    <select name="stockStatus" id="stockStatus" onchange="updateProductList(this.value);">
+    <select name="stock-status" id="stock-status">
         <option value="all">All</option>
         <option value="inStock">In Stock</option>
         <option value="outOfStock">Out of Stock</option>
     </select>
 </div>
+
+ 

@@ -1,28 +1,21 @@
-﻿function updateProductList(stockStatus) {
-    var productList;
+﻿$(document).ready(function () {
+    $('#stock-status').change(function () {
+        var selectedStockStatus = $(this).val();
 
-    switch (stockStatus) {
-        case 'all':
-            productList = allProducts;
-            break;
-        case 'inStock':
-            productList = inStockProducts;
-            break;
-        case 'outOfStock':
-            productList = outOfStockProducts;
-            break;
-    }
-    console.log(productList);
-    CatalogProducts.setProducts(productList);
-    
-    CatalogProducts.getProducts();
-    console.log("------------------");
-}
-
-$(document).ready(function () {
-    updateProductList('all');
-
-    $('#stockStatus').change(function () {
-        updateProductList($(this).val());
+    $.ajax({
+        url: '/ProductStock/GetFilteredCategoryProducts',
+        type: 'GET',
+        data: {
+            categoryId: categoryId,
+            stockStatus: selectedStockStatus
+        },
+        success: function (data) {
+            console.log(data);
+            $('.product-grid .item-grid').html(data);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert('Rafet Failed to retrieve products: ' + thrownError);
+        }
     });
+});
 });

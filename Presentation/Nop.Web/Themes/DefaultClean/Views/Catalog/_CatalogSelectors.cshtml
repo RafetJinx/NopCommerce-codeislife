@@ -30,11 +30,12 @@
                     if (!$(this).hasClass('selected')) {
                         $viewModeEls.toggleClass('selected');
                         CatalogProducts.getProducts();
+                        @* FilteredProducts.getFilteredProducts(); *@
                     }
                     return false;
                 });
 
-                $(CatalogProducts).on('before', function (e) {
+                $(FilteredProducts).on('before', function (e) {
                     var $viewModeEl = $('[data-viewmode].selected');
                     if ($viewModeEl) {
                         e.payload.urlBuilder
@@ -52,13 +53,17 @@
             @Html.DropDownList("products-orderby", Model.AvailableSortOptions, new { aria_label = T("Catalog.OrderBy.Label") })
         </div>
         <script asp-location="Footer">
+            var stockStatus = $('#stock-status')
+
             $(document).ready(function () {
                 var $orderByEl = $('#products-orderby');
                 $orderByEl.on('change', function () {
                     CatalogProducts.getProducts();
+                    @* FilteredProducts.getFilteredProducts(); *@
                 });
 
                 $(CatalogProducts).on('before', function (e) {
+                @* $(FilteredProducts).on('before', function (e) { *@
                     e.payload.urlBuilder
                         .addParameter('orderby', $orderByEl.val());
                 });
@@ -78,9 +83,11 @@
                 var $pageSizeEl = $('#products-pagesize');
                 $pageSizeEl.on('change', function () {
                     CatalogProducts.getProducts();
+                    @* FilteredProducts.getFilteredProducts(); *@
                 });
 
-                $(CatalogProducts).on('before', function (e) {
+            $(CatalogProducts).on('before', function (e) {
+                @* $(FilteredProducts).on('before', function (e) { *@
                     e.payload.urlBuilder
                         .addParameter('pagesize', $pageSizeEl.val());
                 });
